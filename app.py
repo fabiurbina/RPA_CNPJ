@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template_string
+from flask import Flask, jsonify, render_template_string, request
 from RPA_INICIAL import executar_automacao
 
 app = Flask(__name__)
@@ -19,7 +19,7 @@ FORM_HTML = """
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        resultado = executar_automacao()  # sem parâmetro, roda direto
+        resultado = executar_automacao()  # roda o RPA
         return jsonify({"resultado": resultado})
     return render_template_string(FORM_HTML)
 
