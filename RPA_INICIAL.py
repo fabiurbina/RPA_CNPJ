@@ -422,4 +422,6 @@ def executar_automacao(dados = None):
             else:
                 print("❌ Nenhum telefone encontrado para os CPFs fornecidos.")
 
-executar_automacao()
+if __name__ == "__main__":
+    resultado = executar_automacao()
+    print(resultado)
