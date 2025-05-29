@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Executar RPA Online</title>
+</head>
+<body>
+  <h2>Executar Automação</h2>
+  <input type="text" id="nome" placeholder="Digite o nome">
+  <button onclick="executar()">Executar RPA</button>
+
+  <p id="resultado"></p>
+
+  <script>
+    function executar() {
+      const nome = document.getElementById("nome").value;
+
+      fetch("https://SEU-APP-NO-RENDER.onrender.com/executar-rpa", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ nome: nome })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("resultado").innerText = data.resultado;
+      })
+      .catch(error => {
+        console.error("Erro:", error);
+        document.getElementById("resultado").innerText = "Erro ao executar.";
+      });
+    }
+  </script>
+</body>
+</html>
